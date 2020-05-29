@@ -13,9 +13,6 @@ const { API_KEY } = process.env;
 // });
 
 export default function App() {
-  const [hasPermission, setHasPermission] = useState(null);
-  const [cameraRef, setCameraRef] = useState(null)
-  const [type, setType] = useState(Camera.Constants.Type.back);
   return (
     <View style={styles.container}>
       <Text style={styles.welcome}>Welcome to Facegify!</Text>

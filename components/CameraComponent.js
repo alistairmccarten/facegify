@@ -30,6 +30,7 @@ export default function CameraComponent() {
             justifyContent: 'flex-end',
             width: 350
           }}>
+          {/* Flip camera button */}
           {/* <TouchableOpacity
             style={{
               flex: 0.1,
