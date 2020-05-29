@@ -43,4 +43,6 @@ target 'facegify' do
 
   # react-native-cli autolinking
   use_native_modules!
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
 end

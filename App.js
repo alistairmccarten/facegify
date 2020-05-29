@@ -1,17 +1,24 @@
-import * as React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { Platform, StyleSheet, Text, View, Button } from 'react-native';
+import axios from 'axios'
+//API key is located on the .env file
+const { API_KEY } = process.env;
 
-const instructions = Platform.select({
-  ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
-  android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
-});
+// const instructions = Platform.select({
+//   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
+//   android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
+// });
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.welcome}>Welcome to React Native!</Text>
-      <Text style={styles.instructions}>To get started, edit App.js</Text>
-      <Text style={styles.instructions}>{instructions}</Text>
+      <Text style={styles.welcome}>Welcome to Facegify!</Text>
+      {/* <Text style={styles.instructions}>{instructions}</Text> */}
+      <Button
+         onPress={null}
+         title="Scan"
+         color="#841584"
+        />
     </View>
   );
 }
