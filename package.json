@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "expo": "~36.0.0",
     "expo-camera": "^8.2.0",
+    "expo-face-detector": "^8.1.0",
     "expo-splash-screen": "^0.2.3",
     "expo-updates": "~0.2.0",
     "react": "~16.9.0",

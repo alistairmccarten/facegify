@@ -1314,6 +1314,11 @@
     lodash "^4.5.0"
     prop-types "^15.6.1"
 
+"@use-expo/font@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@use-expo/font/-/font-2.0.0.tgz#09b56d626e5b0c83cd0116f5bb69ad6d612d677f"
+  integrity sha512-oOJ2uaRyZNQg7PnQviz7nBcdrRL38zxScab4ktgtI4asa6G0dHW9wg307uJJmn0sHS04Yqtw+m0EOjDcGw3iWg==
+
 abort-controller@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/abort-controller/-/abort-controller-3.0.0.tgz#eaf54d53b62bae4138e809ca225c8439a6efb392"
@@ -2425,6 +2430,11 @@ expo-error-recovery@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/expo-error-recovery/-/expo-error-recovery-1.0.0.tgz#2ca9d59fcd16c5c881af877993731056f2d46afe"
   integrity sha512-xnxciNEpGmwxx8BAE2A9fd9HxtzWtz8p9mikKU+EfWgOXaYD3FJwgbFoVLD2pm4QUarxwOcic76rcwg+0cNnGg==
+
+expo-face-detector@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/expo-face-detector/-/expo-face-detector-8.1.0.tgz#e7f7ea1c929700334b1e5b7e1f58c27d26e12ab2"
+  integrity sha512-Ral+NDeDDL5mnGKBH17iDxW9jPM+WcSikOiNrw+/APyvkan6OOMTfh+qkFgcAqj5UsAAgcb9I+BUQ/lO7Qinaw==
 
 expo-file-system@~8.0.0:
   version "8.0.0"

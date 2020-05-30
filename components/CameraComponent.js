@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { Camera } from 'expo-camera';
+import * as FaceDetector from 'expo-face-detector';
 import { MaterialCommunityIcons } from '@expo/vector-icons/';
 
 export default function CameraComponent({ setState }) {
@@ -26,7 +27,9 @@ export default function CameraComponent({ setState }) {
         style={{ flex: 1 }}
         type={type}
         useCamera2Api={true}
-        onFacesDetected={this.handleFacesDetected}
+        // docs.expo.io/versions/latest/sdk/facedetector/#event-shape
+        // onFacesDetected={}; add faces[] into the state
+        // the data from this detection might be useful for detection APIs
         faceDetectorSettings={{
           mode: FaceDetector.Constants.Mode.fast,
           detectLandmarks: FaceDetector.Constants.Landmarks.none,
