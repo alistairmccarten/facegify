@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as FaceDetector from 'expo-face-detector';
 import { MaterialCommunityIcons } from '@expo/vector-icons/';
+import ProcessImage from './ScanImage.js';
 
 export default function CameraComponent({ setState }) {
   const [hasPermission, setHasPermission] = useState(null);
@@ -67,7 +68,8 @@ export default function CameraComponent({ setState }) {
               if (cameraRef) {
                 console.log('Capturing photo...');
                 let photo = await cameraRef.takePictureAsync({ quality: 0.5, base64: true });
-                console.log('photo:', photo);
+                ProcessImage(photo.base64);
+                // console.log('photo:', photo);
                 setState(s => ({ ...s, photo }));
               }
             }}>

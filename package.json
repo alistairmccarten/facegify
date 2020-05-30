@@ -22,7 +22,8 @@
     "react-native-screens": "~2.2.0",
     "react-native-unimodules": "~0.9.0",
     "react-native-web": "~0.11.7",
-    "react-test-renderer": "16.13.1"
+    "react-test-renderer": "16.13.1",
+    "skybiometry": "^1.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
