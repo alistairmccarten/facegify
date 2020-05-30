@@ -4,7 +4,7 @@ import { Camera } from 'expo-camera';
 
 export default function CameraComponent() {
   const [hasPermission, setHasPermission] = useState(null);
-  const [cameraRef, setCameraRef] = useState(null)
+  const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.front);
 
   useEffect(() => {
@@ -12,7 +12,8 @@ export default function CameraComponent() {
       const { status } = await Camera.requestPermissionsAsync();
       setHasPermission(status === 'granted');
     })();
-  }, []);if (hasPermission === null) {
+  }, []);
+  if (hasPermission === null) {
     return <View />;
   }
   if (hasPermission === false) {
@@ -20,15 +21,18 @@ export default function CameraComponent() {
   }
   return (
     <View style={{ flex: 1 }}>
-      <Camera style={{ flex: 1 }} type={type} ref={ref => {
-        setCameraRef(ref) ;
-  }}>
+      <Camera
+        style={{ flex: 1 }}
+        type={type}
+        ref={(ref) => {
+          setCameraRef(ref);
+        }}>
         <View
           style={{
             flex: 1,
             backgroundColor: 'transparent',
             justifyContent: 'flex-end',
-            width: 350
+            width: 350,
           }}>
           {/* Flip camera button */}
           {/* <TouchableOpacity
@@ -45,31 +49,35 @@ export default function CameraComponent() {
             }}>
             <Text style={{ fontSize: 18, marginBottom: 10, color: 'white' }}> Flip </Text>
           </TouchableOpacity> */}
-          <TouchableOpacity style={{alignSelf: 'center'}} onPress={async() => {
-            if(cameraRef){
-              let photo = await cameraRef.takePictureAsync();
-              console.log('photo', photo);
-            }
-          }}>
-            <View style={{ 
-               borderWidth: 2,
-               borderRadius:"50%",
-               borderColor: 'white',
-               height: 50,
-               width:50,
-               display: 'flex',
-               justifyContent: 'center',
-               alignItems: 'center',
-              marginBottom: 20}}
-            >
-              <View style={{
-                 borderWidth: 2,
-                 borderRadius:"50%",
-                 borderColor: 'white',
-                 height: 40,
-                 width:40,
-                 backgroundColor: 'white'}} >
-              </View>
+          <TouchableOpacity
+            style={{ alignSelf: 'center' }}
+            onPress={async () => {
+              if (cameraRef) {
+                let photo = await cameraRef.takePictureAsync();
+                console.log('photo', photo);
+              }
+            }}>
+            <View
+              style={{
+                borderWidth: 2,
+                borderRadius: '50%',
+                borderColor: 'white',
+                height: 50,
+                width: 50,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginBottom: 20,
+              }}>
+              <View
+                style={{
+                  borderWidth: 2,
+                  borderRadius: '50%',
+                  borderColor: 'white',
+                  height: 40,
+                  width: 40,
+                  backgroundColor: 'white',
+                }}></View>
             </View>
           </TouchableOpacity>
         </View>
