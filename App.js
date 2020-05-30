@@ -15,8 +15,9 @@ const { API_KEY } = process.env;
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.welcome}>Welcome to Facegify!</Text>
       {/* <Text style={styles.instructions}>{instructions}</Text> */}
+      <Text style={styles.wordmark}>Facegify</Text>
+      <Text style={styles.subtext}>Built using Giphy</Text>
       <CameraComponent/>
       <Button
          onPress={null}
@@ -31,18 +32,23 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#000000',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  custom: {
+    fontFamily: 'Lobster-Regular',
+    fontSize: 32,
   },
-  instructions: {
+  wordmark: {
+    fontSize: 50,
     textAlign: 'center',
-    color: '#333333',
+    marginTop: 20,
+    color: '#FFF',
+    fontFamily: 'Lobster-Regular',
+  },
+  subtext: {
+    textAlign: 'center',
+    color: '#FFF',
     marginBottom: 5,
   },
 });
