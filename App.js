@@ -7,6 +7,8 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
 import CameraComponent from './components/CameraComponent.js';
 import SearchInput from "./components/SearchInput";
 
@@ -21,8 +23,11 @@ const { API_KEY } = process.env;
 // });
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    'Lobster': require('./assets/fonts/Lobster-Regular.ttf'),
+  });
   
-  return (
+  return fontsLoaded ? (
     <View style={styles.container}>
       {/* <Text style={styles.instructions}>{instructions}</Text> */}
       <Text style={styles.wordmark}>Facegify</Text>
@@ -30,7 +35,7 @@ export default function App() {
       <CameraComponent />
       <Button onPress={null} title="Scan" color="#841584" />
     </View>
-  );
+  ) : (<AppLoading />);
 }
 
 function search() {
@@ -44,7 +49,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
   },
   custom: {
-    fontFamily: 'Lobster-Regular',
+    fontFamily: 'Lobster',
     fontSize: 32,
   },
   wordmark: {
@@ -52,7 +57,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
     color: '#FFF',
-    fontFamily: 'Lobster-Regular',
+    fontFamily: 'Lobster',
   },
   subtext: {
     textAlign: 'center',

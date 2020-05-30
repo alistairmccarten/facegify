@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@use-expo/font": "^2.0.0",
     "axios": "^0.19.2",
     "expo": "~36.0.0",
     "expo-camera": "^8.2.0",
@@ -25,6 +26,11 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "babel-preset-expo": "~8.0.0"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
   },
   "private": true
 }

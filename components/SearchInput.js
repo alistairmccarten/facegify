@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
       width: '100%',
       height: 50,
       color: 'black',
-      border: '1px solid black'
+      borderWidth: 1,
     },
     image:{
       width: 300,
