@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { Camera } from 'expo-camera';
+import { MaterialCommunityIcons } from '@expo/vector-icons/';
 
-export default function CameraComponent() {
+export default function CameraComponent({ setState }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.front);
@@ -24,6 +25,15 @@ export default function CameraComponent() {
       <Camera
         style={{ flex: 1 }}
         type={type}
+        useCamera2Api={true}
+        onFacesDetected={this.handleFacesDetected}
+        faceDetectorSettings={{
+          mode: FaceDetector.Constants.Mode.fast,
+          detectLandmarks: FaceDetector.Constants.Landmarks.none,
+          runClassifications: FaceDetector.Constants.Classifications.none,
+          minDetectionInterval: 100,
+          tracking: true,
+        }}
         ref={(ref) => {
           setCameraRef(ref);
         }}>
@@ -32,7 +42,6 @@ export default function CameraComponent() {
             flex: 1,
             backgroundColor: 'transparent',
             justifyContent: 'flex-end',
-            width: 350,
           }}>
           {/* Flip camera button */}
           {/* <TouchableOpacity
@@ -53,14 +62,16 @@ export default function CameraComponent() {
             style={{ alignSelf: 'center' }}
             onPress={async () => {
               if (cameraRef) {
-                let photo = await cameraRef.takePictureAsync();
-                console.log('photo', photo);
+                console.log('Capturing photo...');
+                let photo = await cameraRef.takePictureAsync({ quality: 0.5, base64: true });
+                console.log('photo:', photo);
+                setState(s => ({ ...s, photo }));
               }
             }}>
-            <View
+            {/* <View
               style={{
                 borderWidth: 2,
-                borderRadius: '50%',
+                borderRadius: 50,
                 borderColor: 'white',
                 height: 50,
                 width: 50,
@@ -71,14 +82,14 @@ export default function CameraComponent() {
               }}>
               <View
                 style={{
-                  borderWidth: 2,
-                  borderRadius: '50%',
+                  borderRadius: 40,
                   borderColor: 'white',
                   height: 40,
                   width: 40,
                   backgroundColor: 'white',
                 }}></View>
-            </View>
+            </View> */}
+            <MaterialCommunityIcons name='circle-slice-8' size={64} color='white' />
           </TouchableOpacity>
         </View>
       </Camera>
