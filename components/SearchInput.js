@@ -1,61 +1,63 @@
-import React, { useState } from 'react';
-import {
-  TextInput,
-  Button,
-  FlatList,
-  View,
-  StyleSheet,
-  Image,
-} from 'react-native';
-import axios from 'axios';
+import React, { useState } from "react";
+import { TextInput, Button, FlatList, View, StyleSheet, Image } from "react-native";
+import axios from "axios";
 // const {API_KEY} = process.env
 
 export default function SearchInput() {
-  const [value, onChangeText] = useState('');
-  const [items, setItems] = useState([]);
-  const API_KEY = 'Kv4DDMUg9mtiFDMdC2g5eqMqhMX0ciGE';
+  const [value, onChangeText] = useState("");
+  const [items, setItems] = useState([])
+  const API_KEY = "Kv4DDMUg9mtiFDMdC2g5eqMqhMX0ciGE";
+  const BASE_URL = 'http://api.giphy.com/v1/gifs/search';
 
   const giphySearch = async () => {
     try {
-      let res = await axios.get(
-        'https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${value}&limit=10'
-      );
-      //   imgArr.push(res.data.data);
-      setItems(items.concat(res.data.data));
-      debugger;
+      const apiCall = await fetch(`${BASE_URL}?api_key=${API_KEY}&q=${value}`);
+      let res = await apiCall.json();
+      setItems(res.data);
+      debugger
     } catch (error) {
       console.log(error);
     }
   };
+
+const onEdit = (str) =>{
+  onChangeText(str);
+  giphySearch();
+}
   return (
     <View style={styles.container}>
+    <TextInput
+      placeholder="Enter your giphy"
+      placeholderTextColor='#fff'
+      style={styles.textInput}
+        onChangeText={(text) => onEdit(text)}
+      />
       <FlatList
         data={items}
-        renderItem={({ item }) => <Image key={item.id} source={item.url} />}
-        keyExtractor={(index) => {
-          return index;
-        }}
-      />
-      <TextInput
-        style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
-        onChangeText={(text) => onChangeText(text)}
-        value={value}
-      />
-      <Button
-        onPress={() => {
-          giphySearch(value);
-        }}
-        title="click"
+        renderItem={({ item }) => <Image style={styles.image} key={item.id} source={{url: item.images.original.url}} />}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container:{
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    textInput: {
+      width: '100%',
+      height: 50,
+      color: 'black',
+      border: '1px solid black'
+    },
+    image:{
+      width: 300,
+      height: 150,
+      borderWidth: 3,
+      marginBottom: 5
+    }
+
 });
