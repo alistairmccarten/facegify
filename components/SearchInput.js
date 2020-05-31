@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextInput, Button, FlatList, View, StyleSheet, Image } from "react-native";
 import axios from "axios";
 // const {API_KEY} = process.env
 
-export default function SearchInput() {
+export default function SearchInput(searchValue) {
   const [value, onChangeText] = useState("");
   const [items, setItems] = useState([])
   const API_KEY = "Kv4DDMUg9mtiFDMdC2g5eqMqhMX0ciGE";
   const BASE_URL = 'http://api.giphy.com/v1/gifs/search';
 
-  const giphySearch = async () => {
+  useEffect(() => { const giphySearch = async() => {
     try {
-      const apiCall = await fetch(`${BASE_URL}?api_key=${API_KEY}&q=${value}`);
+      const apiCall = await fetch(`${BASE_URL}?api_key=${API_KEY}&q=${searchValue}`);
       let res = await apiCall.json();
       setItems(res.data);
       debugger
@@ -19,19 +19,19 @@ export default function SearchInput() {
       console.log(error);
     }
   };
-
-const onEdit = (str) =>{
-  onChangeText(str);
-  giphySearch();
-}
+  })
+// const onEdit = (str) =>{
+//   onChangeText(str);
+//   giphySearch();
+// }
   return (
     <View style={styles.container}>
-    <TextInput
+    {/* <TextInput
       placeholder="Enter your giphy"
       placeholderTextColor='#fff'
       style={styles.textInput}
         onChangeText={(text) => onEdit(text)}
-      />
+      /> */}
       <FlatList
         data={items}
         renderItem={({ item }) => <Image style={styles.image} key={item.id} source={{url: item.images.original.url}} />}

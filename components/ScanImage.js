@@ -1,4 +1,3 @@
-import { Alert } from "react-native";
 import axios from 'axios';
 
 export default function ProcessImage(image) {
@@ -42,9 +41,7 @@ export default function ProcessImage(image) {
         }, (error) => {
           console.log(error);
         }).finally(() => {
-          Alert.alert("Output", mood); // 
+          return mood;
         });
-      }
-      
-      // Delete image
+      }      
 }

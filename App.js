@@ -20,6 +20,7 @@ const { API_KEY } = process.env;
 
 export default function App() {
   const [state, setState] = useState({});
+  const [mood, setMood] = useState({});
 
   let [fontsLoaded] = useFonts({
     'Lobster': require('./assets/fonts/Lobster-Regular.ttf'),
@@ -40,10 +41,6 @@ export default function App() {
       </TouchableOpacity>
     </View>
   ) : (<AppLoading />);
-}
-
-function search() {
-
 }
 
 const styles = StyleSheet.create({
