@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { Camera } from 'expo-camera';
-import * as FaceDetector from 'expo-face-detector';
 import { MaterialCommunityIcons } from '@expo/vector-icons/';
-import ProcessImage from './ScanImage.js';
 import axios from 'axios';
 
 export default function CameraComponent({ setState }) {
@@ -51,7 +49,6 @@ export default function CameraComponent({ setState }) {
     return result;
   };
 
-
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestPermissionsAsync();
@@ -79,21 +76,6 @@ export default function CameraComponent({ setState }) {
             backgroundColor: 'transparent',
             justifyContent: 'flex-end',
           }}>
-          {/* Flip camera button */}
-          {/* <TouchableOpacity
-            style={{
-              flex: 0.1,
-              alignSelf: 'flex-end'
-            }}
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}>
-            <Text style={{ fontSize: 18, marginBottom: 10, color: 'white' }}> Flip </Text>
-          </TouchableOpacity> */}
           <TouchableOpacity
             style={{ alignSelf: 'center' }}
             onPress={async () => {

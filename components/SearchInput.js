@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { TextInput, Button, FlatList, View, StyleSheet, Image } from "react-native";
+import { TextInput, Button, FlatList, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import axios from "axios";
+import { NativeModules } from 'react-native';
+import * as FileSystem from 'expo-file-system';
 // const {API_KEY} = process.env
 
 export default function SearchInput({ mood }) {
@@ -39,12 +41,53 @@ export default function SearchInput({ mood }) {
       <FlatList
         data={items}
         renderItem={({ item }) => (
-          <Image style={styles.image} key={item.id}
-            source={{ url: item.images.original.url }} />
+          <TouchableOpacity onPress={()=> copyToClipboard(item.images.original.url)}>
+            <Image style={styles.image} key={item.id} source={{ url: item.images.original.url }}/>
+          </TouchableOpacity>
         )}
       />
     </View>
   );
+}
+
+function copyToClipboard(url) {
+  // const getImage = async() => {
+  //   let localUri = null;
+  //   try {
+  //     localUri = await FileSystem.downloadAsync(url, FileSystem.documentDirectory + 'name.ext');
+  //   } catch(e) {
+  //       console.log(e);
+  //   }
+  //   return localUri;
+  // }
+  // function readFile(fileLocation) {
+  //   let base64 = FileSystem.readAsStringAsync(fileLocation, 'base64');
+  //   console.log(base64);
+  //   // NativeModules.BetterClipboard.addBase64Image(base64);
+  // }
+
+  // let file = "";
+  // let base64 = "";
+  // Promise.resolve().then(()=> {
+  //   return new Promise(resolve => {
+  //     setTimeout(() => {
+  //       file = getImage();
+  //       console.log('done 1');
+  //       console.log(file)
+  //       resolve();
+  //     }, 1000);
+  //   });
+  // }).finally(() => {
+  //   base64 = readFile(file);
+  //   console.log('done 2');
+  // }).then(() => {
+  //   console.log(base64);
+  // });
+  
+  // const { uri: localUri } = await FileSystem.downloadAsync(url, FileSystem.documentDirectory + 'name.ext');
+  // let base64 = FileSystem.readAsStringAsync(localUri, 'base64');
+  // console.log(base64);
+  // NativeModules.BetterClipboard.addBase64Image(base64);
 }
 
 const styles = StyleSheet.create({

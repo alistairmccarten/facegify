@@ -36,6 +36,9 @@ target 'facegify' do
   pod 'glog', :podspec => "#{rnPrefix}/third-party-podspecs/glog.podspec"
   pod 'Folly', :podspec => "#{rnPrefix}/third-party-podspecs/Folly.podspec"
 
+
+  pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
+
   # Other native modules
 
   # Automatically detect installed unimodules
