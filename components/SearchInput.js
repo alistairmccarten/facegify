@@ -14,7 +14,7 @@ export default function SearchInput({ mood }) {
     const giphySearch = async () => {
       try {
         console.log('Fetching gifs:', mood);
-        const apiCall = await fetch(`${BASE_URL}?api_key=${API_KEY}&q=surprised`);
+        const apiCall = await fetch(`${BASE_URL}?api_key=${API_KEY}&q=${mood}`);
         let res = await apiCall.json();
         setItems(res.data);
         debugger
