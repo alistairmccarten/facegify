@@ -4,6 +4,7 @@ import axios from "axios";
 // const {API_KEY} = process.env
 
 export default function SearchInput({ mood }) {
+  console.log('In SearhInput Compinent looking for:', mood);
   const [items, setItems] = useState([])
   const API_KEY = "Kv4DDMUg9mtiFDMdC2g5eqMqhMX0ciGE";
   const BASE_URL = 'http://api.giphy.com/v1/gifs/search';
@@ -12,7 +13,8 @@ export default function SearchInput({ mood }) {
   useEffect(() => {
     const giphySearch = async () => {
       try {
-        const apiCall = await fetch(`${BASE_URL}?api_key=${API_KEY}&q=${mood}&limit=${LIMIT}`);
+        console.log('Fetching gifs:', mood);
+        const apiCall = await fetch(`${BASE_URL}?api_key=${API_KEY}&q=surprised`);
         let res = await apiCall.json();
         setItems(res.data);
         debugger
@@ -21,7 +23,7 @@ export default function SearchInput({ mood }) {
       }
     };
     giphySearch();
-  })
+  }, []);
   // const onEdit = (str) =>{
   //   onChangeText(str);
   //   giphySearch();

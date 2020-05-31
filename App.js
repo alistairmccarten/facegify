@@ -20,7 +20,6 @@ const { API_KEY } = process.env;
 
 export default function App() {
   const [state, setState] = useState({});
-  const [mood, setMood] = useState({});
 
   let [fontsLoaded] = useFonts({
     'Lobster': require('./assets/fonts/Lobster-Regular.ttf'),
@@ -31,10 +30,10 @@ export default function App() {
       {/* <Text style={styles.instructions}>{instructions}</Text> */}
       <Text style={styles.wordmark}>Facegify</Text>
       <Text style={styles.subtext}>Built using Giphy</Text>
-      {state.photo ? (
-        <SearchInput photo={state.photo} mood={mood} />
+      {state.mood ? (
+        <SearchInput mood={state.mood} />
       ) : (
-          <CameraComponent setState={setState} setMood={setMood} />
+          <CameraComponent setState={setState} />
         )}
       <TouchableOpacity style={styles.btnScan}>
         <Text style={styles.btnScanText}>Scan</Text>
