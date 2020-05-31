@@ -22,7 +22,6 @@ export default function ProcessImage(image) {
         RequestSkyBiometry(url);
       });
 
-
       // Request SkyBiometry API
       function RequestSkyBiometry(url) {
         axios({
