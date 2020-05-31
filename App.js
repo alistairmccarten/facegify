@@ -32,9 +32,9 @@ export default function App() {
       <Text style={styles.wordmark}>Facegify</Text>
       <Text style={styles.subtext}>Built using Giphy</Text>
       {state.photo ? (
-        <SearchInput photo={state.photo} />
+        <SearchInput photo={state.photo} mood={mood} />
       ) : (
-          <CameraComponent setState={setState} />
+          <CameraComponent setState={setState} setMood={setMood} />
         )}
       <TouchableOpacity style={styles.btnScan}>
         <Text style={styles.btnScanText}>Scan</Text>

@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons/';
 import ProcessImage from './ScanImage.js';
 import axios from 'axios';
 
-export default function CameraComponent({ setState }) {
+export default function CameraComponent({ setState, setMood }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.front);
