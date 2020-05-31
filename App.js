@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
+import { MaterialCommunityIcons } from '@expo/vector-icons/';
 import CameraComponent from './components/CameraComponent.js';
 import SearchInput from "./components/SearchInput";
 
@@ -35,8 +36,9 @@ export default function App() {
       ) : (
           <CameraComponent setState={setState} />
         )}
-      <TouchableOpacity style={styles.btnScan}>
-        <Text style={styles.btnScanText}>Scan</Text>
+      <TouchableOpacity style={styles.btnScan} onPress={() => setState({})}>
+        <MaterialCommunityIcons name='reload' size={32} color='#841584' />
+        <Text style={styles.btnScanText}>Refresh</Text>
       </TouchableOpacity>
     </View>
   ) : (<AppLoading />);
@@ -65,11 +67,13 @@ const styles = StyleSheet.create({
   },
   btnScan: {
     flexDirection: 'row',
+    alignContent: 'center',
     justifyContent: 'center',
     padding: 16,
-
   },
   btnScanText: {
+    paddingLeft: 12,
     color: '#841584',
+    textAlignVertical: 'center',
   },
 });

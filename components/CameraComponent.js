@@ -25,10 +25,7 @@ export default function CameraComponent({ setState }) {
       }
     })
     url = response.data.data.link;
-
-    console.log('url:', url);
     result = await RequestSkyBiometry(url);
-    console.log('Mood detection complete:', result);
 
     // Request SkyBiometry API
     async function RequestSkyBiometry(url) {
@@ -47,11 +44,10 @@ export default function CameraComponent({ setState }) {
         }
       });
       detectedMood = response.data.photos[0].tags[0].attributes.mood.value;
-      console.log('detectedMood:', detectedMood);
       return detectedMood;
     }
 
-    console.log("Detection result:", result);
+    console.log("Mood detection complete. result:", result);
     return result;
   };
 
@@ -74,16 +70,6 @@ export default function CameraComponent({ setState }) {
         style={{ flex: 1 }}
         type={type}
         useCamera2Api={true}
-        // docs.expo.io/versions/latest/sdk/facedetector/#event-shape
-        // onFacesDetected={}; add faces[] into the state
-        // the data from this detection might be useful for detection APIs
-        faceDetectorSettings={{
-          mode: FaceDetector.Constants.Mode.fast,
-          detectLandmarks: FaceDetector.Constants.Landmarks.none,
-          runClassifications: FaceDetector.Constants.Classifications.none,
-          minDetectionInterval: 100,
-          tracking: true,
-        }}
         ref={(ref) => {
           setCameraRef(ref);
         }}>
@@ -114,7 +100,10 @@ export default function CameraComponent({ setState }) {
               if (cameraRef) {
                 console.log('Capturing photo...');
                 let photo = await cameraRef.takePictureAsync({ quality: 0.5, base64: true });
+                console.log('Captured photo');
+                console.log('processing image');
                 let mood = await ProcessImage(photo.base64);
+                console.log('processed image');
                 // console.log('photo:', photo);
                 console.log('mood state set to:', mood);
                 setState(s => ({ ...s, photo, mood}));
