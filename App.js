@@ -30,14 +30,14 @@ export default function App() {
     <View style={styles.container}>
       {/* <Text style={styles.instructions}>{instructions}</Text> */}
       <Text style={styles.wordmark}>Facegify</Text>
-      <Text style={styles.subtext}>Built using Giphy</Text>
+      <Text style={styles.subtext}>Built with Giphy</Text>
       {state.mood ? (
         <SearchInput mood={state.mood} />
       ) : (
           <CameraComponent setState={setState} />
         )}
       <TouchableOpacity style={styles.btnScan} onPress={() => setState({})}>
-        <MaterialCommunityIcons name='reload' size={32} color='#841584' />
+        <MaterialCommunityIcons name='reload' size={32} color='#fff' />
         <Text style={styles.btnScanText}>Refresh</Text>
       </TouchableOpacity>
     </View>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   btnScanText: {
     paddingLeft: 12,
-    color: '#841584',
+    color: '#fff',
     textAlignVertical: 'center',
   },
 });
