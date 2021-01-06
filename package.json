@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@use-expo/font": "^2.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "expo": "~36.0.0",
     "expo-camera": "^8.2.0",
     "expo-face-detector": "^8.1.0",
